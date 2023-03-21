@@ -1,0 +1,24 @@
+.portfolio-items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.1rem;
+  padding: 0 50px;
+}
+.filters-wrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 32px;
+  font-family: "Yeseva One", cursive;
+}
+.filters-wrapper li {
+  cursor: pointer;
+  font-size: 1.5em;
+}
+.filters-wrapper .underline {
+  height: 4px;
+  width: 100%;
+  background-color: #e26f4f;
+  display: block;
+  border-radius: 4px;
+}

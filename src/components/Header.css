@@ -1,0 +1,71 @@
+.header .wrapper {
+  position: relative;
+  height: 680px;
+}
+.header-img {
+  background-image: url("../assets/header.jpg");
+  height: 400px;
+  width: 270px;
+  background-size: cover;
+  position: absolute;
+  left: 8%;
+  top: 160px;
+}
+.header-box {
+  position: absolute;
+  left: 18%;
+  background: #e26f4f;
+  width: 525px;
+  height: 260px;
+  top: 10px;
+}
+.header-box h1 {
+  position: absolute;
+  font-size: 3.5rem;
+}
+.header-box h1:nth-child(1) {
+  top: 80px;
+  left: 100px;
+}
+.header-box h1:nth-child(2) {
+  top: 140px;
+  left: 200px;
+}
+.portfolio {
+  position: absolute;
+  font-size: 3.5rem;
+  top: 380px;
+  right: -1%;
+  transform: rotate(90deg);
+}
+@media (max-width: 700px) {
+  .header-img {
+    left: 5%;
+    top: 50px;
+  }
+  .header-box {
+    background: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 430px;
+  }
+  .header-box h1 {
+    position: relative;
+  }
+  .header-box h1:nth-child(1) {
+    top: 0;
+    left: 0;
+  }
+  .header-box h1:nth-child(2) {
+    top: 0;
+    left: 0;
+  }
+  .portfolio {
+    right: -70px;
+    top: 280px;
+  }
+}

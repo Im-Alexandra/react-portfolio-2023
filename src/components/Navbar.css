@@ -1,0 +1,161 @@
+:root {
+  --burger-width: 35px;
+  --burger-height: 21px;
+  --bar-height: 2.5px;
+  --animation-timing: all 200ms ease-in-out;
+}
+
+.navbar-container {
+  background-color: #0c2a38;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 100px;
+  z-index: 1;
+  -webkit-transition: all 0.4s cubic-bezier(0.22, 0.68, 0, 1.1);
+  transition: all 0.4s cubic-bezier(0.22, 0.68, 0, 1.1);
+}
+nav {
+  display: flex;
+  justify-content: flex-start;
+}
+.burger-menu {
+  height: var(--burger-height);
+  width: var(--burger-width);
+  margin-left: auto;
+  margin-top: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.burger-menu::after,
+.burger-menu::before,
+.burger-menu div {
+  width: var(--burger-width);
+  height: var(--bar-height);
+  background-color: white;
+  border-radius: 99999px;
+  transform-origin: center center;
+  content: "";
+  position: absolute;
+  top: 25px;
+  transition: var(--animation-timing);
+}
+.burger-menu::after {
+  transform: translateY(12px);
+}
+.burger-menu::before {
+  transform: translateY(-12px);
+}
+@media (min-width: 700px) {
+  .navbar-container.open {
+    width: 300px;
+    height: 400px;
+  }
+  .menu {
+    width: 300px;
+    height: 400px;
+  }
+  .menu.open {
+    margin-top: -40px;
+    display: flex;
+  }
+  .menu ul {
+    display: flex;
+    height: 120px;
+    width: 400px;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+}
+@media (max-width: 700px) {
+  .navbar-container.open {
+    width: 100%;
+    height: 100%;
+  }
+  .menu {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+  }
+  .menu.open {
+    margin-top: -40px;
+  }
+  .menu ul {
+    display: flex;
+    height: 25vh;
+    width: 400px;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-family: "Yeseva One", cursive;
+  font-size: 1.5em;
+}
+.burger-menu.open div {
+  background: transparent;
+  box-shadow: none;
+}
+.burger-menu.open::before {
+  animation: open1 200ms ease-in-out forwards;
+}
+.burger-menu.open::after {
+  animation: open2 200ms ease-in-out forwards;
+}
+
+.burger-menu.closed div {
+  background: white;
+}
+.burger-menu.closed::before {
+  animation: close1 200ms ease-in-out forwards;
+}
+.burger-menu.closed::after {
+  animation: close2 200ms ease-in-out forwards;
+}
+
+@keyframes open1 {
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes open2 {
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes close1 {
+  0% {
+    transform: translateY(0px);
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes close2 {
+  0% {
+    transform: translateY(0px);
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
