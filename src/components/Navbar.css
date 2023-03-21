@@ -94,12 +94,21 @@ nav {
     text-align: center;
   }
 }
-
 .menu a {
   text-decoration: none;
   color: white;
   font-family: "Yeseva One", cursive;
   font-size: 1.5em;
+  width: fit-content;
+  display: block;
+  margin: auto;
+}
+.menu .underline {
+  height: 2px;
+  width: 100%;
+  display: block;
+  background-color: white;
+  border-radius: 4px;
 }
 .burger-menu.open div {
   background: transparent;

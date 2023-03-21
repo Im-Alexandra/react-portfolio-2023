@@ -9,6 +9,18 @@ export default function Portfolio() {
   const [showModal, setShowModal] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("All");
   const [displayProject, setDisplayProject] = useState(null);
+  const [underlineColor, setUnderlineColor] = useState("#e26f4f");
+  const colorOptions = [
+    "#e26f4f",
+    "#c07546",
+    "#a52b2a",
+    "#302d2e",
+    "#764348",
+    "#de8e2c",
+    "#c84533",
+    "#c85121",
+    "#012a37",
+  ];
 
   const { documents, error } = useCollection(
     "items",
@@ -41,17 +53,24 @@ export default function Portfolio() {
     setDisplayProject({ ...data });
   };
 
+  const handleFiltersClick = (newFilter) => {
+    setCurrentFilter(newFilter);
+    let randColorIndex = Math.floor(Math.random() * colorOptions.length);
+    setUnderlineColor(colorOptions[randColorIndex]);
+  };
+
   return (
     <div className="portfolio-container ">
       <ul className="filters-wrapper">
         {filters?.map((f) => (
-          <li key={f.name} onClick={() => setCurrentFilter(f.name)}>
+          <li key={f.name} onClick={() => handleFiltersClick(f.name)}>
             <span>{f.name}</span>
             {currentFilter === f.name && (
               <motion.span
                 transition={{ duration: 0.4, delay: 0.1 }}
                 layoutId="rect1"
                 className="underline"
+                style={{ backgroundColor: underlineColor }}
               ></motion.span>
             )}
           </li>

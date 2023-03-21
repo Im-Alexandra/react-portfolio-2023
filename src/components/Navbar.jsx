@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 const menuContainerVariants = {
@@ -24,6 +24,7 @@ const menuItemVariants = {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [menuClass, setMenuClass] = useState("");
+  const location = useLocation();
 
   const updateMenu = () => {
     if (!isOpen) {
@@ -53,16 +54,25 @@ export default function Navbar() {
               <motion.li key={1} variants={menuItemVariants}>
                 <Link to="/about" onClick={updateMenu}>
                   About me
+                  {location.pathname === "/about" && (
+                    <span className="underline"></span>
+                  )}
                 </Link>
               </motion.li>
               <motion.li key={2} variants={menuItemVariants}>
                 <Link to="/contact" onClick={updateMenu}>
                   Contact
+                  {location.pathname === "/contact" && (
+                    <span className="underline"></span>
+                  )}
                 </Link>
               </motion.li>
               <motion.li key={3} variants={menuItemVariants}>
                 <Link to="/" onClick={updateMenu}>
                   Portfolio
+                  {location.pathname === "/" && (
+                    <span className="underline"></span>
+                  )}
                 </Link>
               </motion.li>
             </motion.ul>
