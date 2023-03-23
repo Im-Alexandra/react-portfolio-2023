@@ -5,6 +5,20 @@ import { useState } from "react";
 import ProjectModal from "../components/ProjectModal";
 import { motion, AnimatePresence } from "framer-motion";
 
+const pageVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.1 },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.1 },
+  },
+};
+
 export default function Portfolio() {
   const [showModal, setShowModal] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("All");
@@ -60,7 +74,13 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="portfolio-container ">
+    <motion.div
+      variants={pageVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="portfolio-container "
+    >
       <ul className="filters-wrapper">
         {filters?.map((f) => (
           <li key={f.name} onClick={() => handleFiltersClick(f.name)}>
@@ -96,6 +116,6 @@ export default function Portfolio() {
           <ProjectModal data={displayProject} handleClick={handleClick} />
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
