@@ -10,6 +10,7 @@
   cursor: pointer;
   box-shadow: rgba(132, 132, 132, 0.3) 0px 8px 24px;
   transition: scale 0.4s cubic-bezier(0.22, 0.68, 0, 1.71);
+  text-wrap: balance;
 }
 .portfolio-item:hover {
   scale: 1.1;

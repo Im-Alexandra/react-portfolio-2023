@@ -1,9 +1,10 @@
+/* import ReadMoreReadLess from "./ReadMoreReadLess"; */
 import "./TimelineItem.css";
 
-export default function TimelineItem({ data, type }) {
+export default function TimelineItem({ data, type, index }) {
   const dateOptions = { month: "short", year: "numeric" };
   return (
-    <div className="timeline-container">
+    <div className="timeline-container" id={`item${index}`}>
       <div className="date-wrapper">
         <p>{data.start.toDate().toLocaleDateString("en-GB", dateOptions)}</p>
         <p>-</p>
@@ -39,15 +40,18 @@ export default function TimelineItem({ data, type }) {
         </>
       )}
 
-      <div className="description-wrapper">
-        <p>{data.description}</p>
-      </div>
-
       <div className="skills-wrapper">
         <p>Skills:</p>
         {data.skills?.map((skill) => (
           <p key={skill}>{skill},</p>
         ))}
+      </div>
+      <div className="description-wrapper">
+        {/* <ReadMoreReadLess index={index}>{data.description}</ReadMoreReadLess> */}
+        <p>{data.description}</p>
+      </div>
+      <div className="timeline">
+        <div className="dot"></div>
       </div>
     </div>
   );

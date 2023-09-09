@@ -1,7 +1,6 @@
 import "./AboutMeImg.css";
 
 export default function AboutMeImg({ data, row }) {
-  console.log(data.row);
   return (
     <div>
       <div className="color">{data.text && <span>#{data.text}</span>}</div>

@@ -11,7 +11,10 @@
   left: 8%;
   top: 160px;
 }
-.header-box {
+.header-box-mobile {
+  display: none;
+}
+.header-box-desktop {
   position: absolute;
   left: 18%;
   background: #e26f4f;
@@ -19,15 +22,15 @@
   height: 260px;
   top: 10px;
 }
-.header-box h1 {
+.header-box-desktop h1 {
   position: absolute;
   font-size: 3.5rem;
 }
-.header-box h1:nth-child(1) {
+.header-box-desktop h1:nth-child(1) {
   top: 80px;
   left: 100px;
 }
-.header-box h1:nth-child(2) {
+.header-box-desktop h1:nth-child(2) {
   top: 140px;
   left: 200px;
 }
@@ -39,30 +42,26 @@
   transform: rotate(90deg);
 }
 @media (max-width: 700px) {
+  .header .wrapper {
+    height: 640px;
+  }
   .header-img {
     left: 5%;
     top: 50px;
   }
-  .header-box {
-    background: transparent;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    width: fit-content;
-    height: fit-content;
-    margin-top: 430px;
+  .header-box-desktop {
+    display: none;
   }
-  .header-box h1 {
-    position: relative;
+  .header-box-mobile {
+    display: block;
+    position: absolute;
+    top: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
   }
-  .header-box h1:nth-child(1) {
-    top: 0;
-    left: 0;
-  }
-  .header-box h1:nth-child(2) {
-    top: 0;
-    left: 0;
+  .header-box-mobile h1:last-child {
+    margin-left: 60px;
   }
   .portfolio {
     right: -70px;

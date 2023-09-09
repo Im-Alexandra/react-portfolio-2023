@@ -1,20 +1,54 @@
 .timeline-container {
-  margin-bottom: 16px;
+  margin-bottom: 32px;
+  position: relative;
 }
 .date-wrapper {
   display: inline-flex;
   gap: 10px;
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #302d2e73;
 }
 .headline {
+  font-size: 1.2em;
+  font-weight: 400;
 }
 .subheadline {
   display: inline-flex;
   gap: 10px;
+  font-size: 0.9em;
+  font-weight: 400;
 }
 .skills-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  font-size: 0.9em;
+  flex-wrap: wrap;
+  color: #302d2e73;
+  font-weight: 400;
 }
 .skills-wrapper p {
+  margin-right: 10px;
+}
+.description-wrapper {
+  font-size: 0.9em;
+  margin-bottom: 32px;
+}
+.timeline {
+  position: absolute;
+  height: 100%;
+  width: 5px;
+  background-color: #51130f;
+  top: 0;
+  left: -20px;
+  border-radius: 40px;
+}
+.dot {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #51130f;
+  border-radius: 50%;
+  top: 15px;
+  left: -10px;
 }

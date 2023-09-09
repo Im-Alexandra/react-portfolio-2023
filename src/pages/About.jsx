@@ -55,7 +55,7 @@ export default function About() {
       className="about-container"
     >
       {/* INTRO */}
-      <div className="row one test-border">
+      <div className="row one">
         {/* TEXT */}
         <div className="col text">
           <h2>About me</h2>
@@ -88,7 +88,7 @@ export default function About() {
       </div>
 
       {/* EDUCATION */}
-      <div className="row two test-border">
+      <div className="row two">
         {/* IMG */}
         <div className="col img-wrapper">
           {aboutImages?.map((img) => {
@@ -103,22 +103,32 @@ export default function About() {
         {/* TEXT */}
         <div className="col text">
           <h2>Education</h2>
-          {education?.map((item) => (
-            <TimelineItem data={item} key={item.id} type={"education"} />
+          {education?.map((item, index) => (
+            <TimelineItem
+              data={item}
+              key={item.id}
+              type={"education"}
+              index={index}
+            />
           ))}
           {educationError && <p>{educationError}</p>}
         </div>
       </div>
 
       {/* EXPERIENCE 1 */}
-      <div className="row three test-border">
+      <div className="row three">
         {/* TEXT */}
         <div className="col text">
           <h2>Experience</h2>
           {experience?.map((item, index) => {
             if (index < 3) {
               return (
-                <TimelineItem data={item} key={item.id} type={"experience"} />
+                <TimelineItem
+                  data={item}
+                  key={item.id}
+                  type={"experience"}
+                  index={index}
+                />
               );
             } else {
               return false;
@@ -140,13 +150,18 @@ export default function About() {
       </div>
 
       {/* EXPERIENCE 2 */}
-      <div className="row four test-border">
+      <div className="row four">
         {/* TEXT */}
         <div className="col text">
           {experience?.map((item, index) => {
             if (index >= 3) {
               return (
-                <TimelineItem data={item} key={item.id} type={"experience"} />
+                <TimelineItem
+                  data={item}
+                  key={item.id}
+                  type={"experience"}
+                  index={index}
+                />
               );
             } else {
               return false;

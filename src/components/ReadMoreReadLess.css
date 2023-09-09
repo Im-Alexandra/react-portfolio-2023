@@ -1,0 +1,62 @@
+.read-more-read-less {
+  position: relative;
+}
+/* .read-more-read-less button {
+  position: absolute;
+  right: 0;
+  bottom: -25px;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: "Josefin Sans", "sans-serif";
+  font-size: 0.9em;
+  font-weight: 300;
+} */
+/* .cutoff-text {
+  --max-lines: 3;
+  --line-height: 1.3;
+  line-height: var(--line-height);
+  max-height: calc(var(--max-lines) * 0.9em * var(--line-height));
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.8s;
+}
+.cutoff-text:has(+ .expand-btn:not(:checked))::before {
+  content: "";
+  position: absolute;
+  height: calc(0.9em * var(--line-height));
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--background-color));
+}
+.expand-btn {
+  appearance: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: -25px;
+  font-family: "Josefin Sans", "sans-serif";
+  font-size: 0.9em;
+  font-weight: 300;
+  color: #302d2e73;
+  transition: color 0.5s;
+}
+.expand-btn:hover {
+  color: #302d2e;
+}
+.expand-btn::before {
+  content: "Read more";
+}
+.expand-btn:checked:before {
+  content: "Read less";
+}
+.cutoff-text:has(+ .expand-btn:checked) {
+  max-height: 17rem;
+}
+ */
+
+.cutoff-text {
+  overflow: hidden;
+}
