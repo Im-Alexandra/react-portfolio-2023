@@ -4,21 +4,29 @@ import "./ReadMoreReadLess.css";
 export default function ReadMoreReadLess({ children, index }) {
   /* max lines = 3, line height = 1.3, font size = 0.9 => 3 * 0.9 * 1.3 = 3.51em */
   const [heightCurr, setHeightCurr] = useState("auto");
-  const [heightHidden, setHeightHidden] = useState("3.51em");
+  const [heightHidden, setHeightHidden] = useState("62px");
   const [heightExpanded, setHeightExpanded] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClick = (e) => {
-    setIsExpanded((prev) => !prev);
-    setHeightCurr(heightExpanded);
-    const element = e.target;
-    console.log(element.clientHeight);
+    if (isExpanded) {
+      setHeightCurr(heightHidden);
+    } else {
+      setHeightCurr(heightExpanded);
+    }
+    setIsExpanded(isExpanded ? false : true);
   };
 
   useEffect(() => {
     const element = document.getElementById(`text${index}`);
-    console.log(element.offsetHeight);
+    
     setHeightExpanded(element.offsetHeight + "px");
     setHeightCurr(heightHidden);
+    if (index === 1) {
+      console.log('text el: ', element);
+      console.log('height expanded: ', element.scrollHeight);
+      console.log('height hidden ', heightHidden);
+    }
+    
   }, [index]);
 
   return (
@@ -35,14 +43,17 @@ export default function ReadMoreReadLess({ children, index }) {
       >
         {children}
       </p>
-      <button
-        layout="position"
-        key="2"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {isExpanded ? "Read less" : "Read more"}
-      </button>
-      {/* <input type="checkbox" className="expand-btn"></input> */}
+      {heightExpanded > heightHidden && 
+      (
+        <button
+          layout="position"
+          key="2"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? "Read less" : "Read more"}
+        </button>
+      )}
+      
     </div>
   );
 }

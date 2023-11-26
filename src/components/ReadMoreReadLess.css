@@ -59,4 +59,5 @@
 
 .cutoff-text {
   overflow: hidden;
+  transition: all 0.5s ease 0s;
 }

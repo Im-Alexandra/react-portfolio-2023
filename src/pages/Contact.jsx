@@ -1,5 +1,6 @@
 import { useCollection } from "../hooks/useCollection";
 import "./Contact.css";
+import Spinner from "../components/Spinner";
 import { motion } from "framer-motion";
 
 const pageVariants = {
@@ -26,7 +27,7 @@ const childrenVariants = {
 };
 
 export default function Contact() {
-  const { documents, error } = useCollection(
+  const { documents, error, isPending } = useCollection(
     "contact",
     ["display", "==", true],
     null,
@@ -40,6 +41,7 @@ export default function Contact() {
       exit="exit"
       className="contact"
     >
+      {isPending && <Spinner color="black" />}
       {documents &&
         documents.map((item) => (
           <motion.div
