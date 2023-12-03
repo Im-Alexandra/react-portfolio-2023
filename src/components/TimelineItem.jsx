@@ -1,4 +1,4 @@
-import ReadMoreReadLess from "./ReadMoreReadLess";
+/* import ReadMoreReadLess from "./ReadMoreReadLess"; */
 import "./TimelineItem.css";
 
 export default function TimelineItem({ data, type, index }) {
@@ -47,8 +47,8 @@ export default function TimelineItem({ data, type, index }) {
         ))}
       </div>
       <div className="description-wrapper">
-        <ReadMoreReadLess index={index}>{data.description}</ReadMoreReadLess>
-        {/* <p>{data.description}</p> */}
+        {/* <ReadMoreReadLess index={index}>{data.description}</ReadMoreReadLess> */}
+        <p>{data.description}</p>
       </div>
       <div className="timeline">
         <div className="dot"></div>

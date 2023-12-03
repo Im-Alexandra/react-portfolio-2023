@@ -4,6 +4,7 @@ import "./About.css";
 import { motion } from "framer-motion";
 import AboutMeImg from "../components/AboutMeImg";
 import Spinner from "../components/Spinner";
+import { useRef, useEffect } from "react";
 
 const pageVariants = {
   hidden: {
@@ -46,7 +47,28 @@ export default function About() {
     null,
     null
   );
-  console.log(imagesPending)
+
+  const colOneRef = useRef(null);
+  const colTwoRef = useRef(null);
+  const colThreeRef = useRef(null);
+  const colFourRef = useRef(null);
+
+  useEffect(() =>{
+    if (!educationPending && !experiencePending && !aboutPending && !imagesPending) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle("show", entry.isIntersecting)
+        })
+      })
+      observer.observe(colOneRef.current)
+      observer.observe(colTwoRef.current)
+      observer.observe(colThreeRef.current)
+      observer.observe(colFourRef.current)
+    }
+    
+  }, [educationPending, experiencePending, aboutPending, imagesPending])
+  
+  
 
   return (
     <motion.div
@@ -62,7 +84,7 @@ export default function About() {
         {/* ABOUT */}
         <div className="row one">
           {/* TEXT */}
-          <div className="col text">
+          <div ref={colOneRef} className="col text">
             <h2>About me</h2>
             {about?.map((about) =>
               about.paragraphs.map((p, index) => <p key={index}>{p}</p>)
@@ -95,7 +117,7 @@ export default function About() {
         {/* EDUCATION */}
         <div className="row two">
           {/* IMG */}
-          <div className="col img-wrapper">
+          <div  className="col img-wrapper">
             {aboutImages?.map((img) => {
               if (img.row === 2) {
                 return <AboutMeImg data={img} key={img.id} />;
@@ -106,7 +128,7 @@ export default function About() {
             {aboutImgError && <p>{aboutImgError}</p>}
           </div>
           {/* TEXT */}
-          <div className="col text">
+          <div ref={colTwoRef} className="col text">
             <h2>Education</h2>
             {education?.map((item, index) => (
               <TimelineItem
@@ -123,7 +145,7 @@ export default function About() {
         {/* EXPERIENCE 1 */}
         <div className="row three">
           {/* TEXT */}
-          <div className="col text">
+          <div ref={colThreeRef} className="col text">
             <h2>Experience</h2>
             {experience?.map((item, index) => {
               if (index < 3) {
@@ -157,7 +179,7 @@ export default function About() {
         {/* EXPERIENCE 2 */}
         <div className="row four">
           {/* TEXT */}
-          <div className="col text">
+          <div ref={colFourRef} className="col text">
             {experience?.map((item, index) => {
               if (index >= 3) {
                 return (
